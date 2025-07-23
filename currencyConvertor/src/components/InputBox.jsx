@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useId } from "react";
 
 function InputBox({
   label,
@@ -11,11 +11,19 @@ function InputBox({
   amountDisable = false,
   currencyDisable = false,
 }) {
+  const amountInputId = useId();
+
   return (
     <div className={`bg-white p-3 rounded-lg flex ${className}`}>
       <div className="w-1/2">
-        <label className="text-black/40 mb-2 inline-block">{label}</label>
+        <label
+          htmlFor={amountInputId}
+          className="text-black/40 mb-2 inline-block"
+        >
+          {label}
+        </label>
         <input
+          id={amountInputId}
           type="number"
           className="outline-none w-full bg-transparent pt-1.5"
           placeholder="Amount"
